@@ -9,7 +9,9 @@ const BLOCK_MOVE_TIME = 2
 
 var blocks = []
 
+#var targets
 var target
+#var s_target
 
 var blip
 var blip_support
@@ -60,17 +62,27 @@ func reposition_target():
 	else:
 		target.get_parent().remove_child(target)
 		target_block.add_child(target)
+		#target.get_node("anim_spin").play("spin")
+		#target.get_child(1).get_node("anim_spin").play("spin")
+		#target_block.add_child(targets.instance())
+		#s_target.get_parent().remove_child(s_target)
+		#target_block.add_child(s_target)
 
 func game_over():
 	blip.kill()
 	timer.stop()
 	target.queue_free()
+	#s_target.queue_free()
 	set_process(false)
 
 func begin_game():
 	
 	# Repopulate blocks
 	var block_scene = ResourceLoader.load("res://scenes/block.xml")
+	for block in blocks:
+		#get_node("blocks").remove_and_delete_child(block)
+		block.destroy()
+	blocks = []
 	while blocks.size() < BLOCK_COUNT:
 		var row = randi() % GRID_ROWS
 		var col = randi() % GRID_COLS
@@ -99,8 +111,20 @@ func reset():
 	blip.connect("dead", self, "begin_game")
 	
 	# Instantiate target
-	target = ResourceLoader.load("res://scenes/target.xml").instance()
+	var targets = ResourceLoader.load("res://scenes/goal.scn")
+	target = targets.instance()
+	#var small_target = targets.instance()
+	#small_target.set_flip_h( true )
+	#small_target.set_scale(0.5)
+	#target.add_child(small_target)
+	#small_target.set_scale( Vector2( 0.5, 0.5 ))
+	#small_target.set_flip_h( true)
+	#small_target.get_node("anim_spin").play("spin")
+	#small_target.get_node("anim_spin").play("spin", -1, -1, true)
+	#small_target.set_pos(Vector2(10,10))
 	get_node("player").add_child(target) # So first call to reposition_target() doesn't throw an error
+	#s_target = target.instance()
+	#get_node("player").add_child(s_target) # So first call to reposition_target() doesn't throw an error
 	reposition_target()
 	
 	# Set timer running
@@ -122,7 +146,9 @@ func _process(delta):
 	# See if blip is moved by a platform or block
 	var new_support = find_blip_support()
 	if new_support == null:
+		#jump()
 		game_over()
+		#return
 	else:
 		if new_support == blip_support:
 			var support_vel = blip_support.get_pos() - blip_support_prev_pos
@@ -140,8 +166,9 @@ func _process(delta):
 
 func _input(ev):
 	if ev.type == InputEvent.KEY:
-		var anim_title_fade_in = get_node("overlay/title").get_node("fade_in")
-		anim_title_fade_in.stop()
-		anim_title_fade_in.seek(0, true)
+		get_node("overlay/title").get_node("fade_in").play("fade_out")
+		#var anim_title_fade_in = get_node("overlay/title").get_node("fade_in")
+		#anim_title_fade_in.stop()
+		#anim_title_fade_in.seek(0, true)
 		set_process_input(false)
 		reset()

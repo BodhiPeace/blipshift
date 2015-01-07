@@ -1,7 +1,7 @@
 extends Node2D
 
-const MOVE_SPEED = 48
-const JUMP_DISTANCE = 64
+const MOVE_SPEED = 58
+const JUMP_DISTANCE = 48 #64
 const DOUBLE_TAP_TIMEOUT = 0.2
 
 var double_tap_timer = 0
@@ -26,6 +26,11 @@ func kill():
 	anim_move_left_right.stop()
 	anim_die.connect("finished", self, "_die_finished")
 	anim_die.play("die")
+
+func jump():
+	anim_jump.play(jump_action)
+	anim_jump.connect("finished", self, "_jump_finished", [], CONNECT_ONESHOT)
+	double_tap_timer = -1
 
 func _jump_finished():
 	if jump_action == "jump_up":
@@ -99,9 +104,10 @@ func _input(ev):
 				jump_action_maybe = "jump_right"
 			if jump_action_maybe != "none":
 				if double_tap_timer > 0 and jump_action == jump_action_maybe:
-					anim_jump.play(jump_action)
-					anim_jump.connect("finished", self, "_jump_finished", [], CONNECT_ONESHOT)
-					double_tap_timer = -1
+					jump()
+					#anim_jump.play(jump_action)
+					#anim_jump.connect("finished", self, "_jump_finished", [], CONNECT_ONESHOT)
+					#double_tap_timer = -1
 				else:
 					double_tap_timer = DOUBLE_TAP_TIMEOUT
 					jump_action = jump_action_maybe

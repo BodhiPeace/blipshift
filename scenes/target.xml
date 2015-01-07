@@ -1,40 +1,87 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="3" version="1.0" version_name="Godot Engine v1.0.3917-beta1">
-	<ext_resource path="res://images/target.*" type="Texture"></ext_resource>
+<resource_file type="PackedScene" subresource_count="5" version="1.0" version_name="Godot Engine v1.0.stable.7eb5d049c2">
+	<ext_resource path="res://images/target.png" type="Texture"></ext_resource>
 	<resource type="Animation" path="local://1">
-		<string name="resource/name"> "pulse" </string>
+		<real name="length"> 3 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> ".:transform/rot" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> True </bool>
+			<string> "transitions" </string>
+			<real_array  len="2"> 				1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="2" shared="false">
+				<real> 360 </real>
+				<real> 0 </real>
+			</array>
+			<string> "times" </string>
+			<real_array  len="2"> 				0, 3 </real_array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://2">
 		<real name="length"> 2 </real>
 		<bool name="loop"> True </bool>
 		<real name="step"> 0.1 </real>
 		<string name="tracks/0/type"> "value" </string>
 		<node_path name="tracks/0/path"> ".:visibility/opacity" </node_path>
-		<int name="tracks/0/interp"> 2 </int>
+		<int name="tracks/0/interp"> 1 </int>
 		<dictionary name="tracks/0/keys" shared="false">
 			<string> "cont" </string>
 			<bool> True </bool>
 			<string> "transitions" </string>
-			<real_array  len="3"> 				1, 1, 1 </real_array>
+			<real_array  len="5"> 				1, 1, 1, 1, 1 </real_array>
 			<string> "values" </string>
-			<array  len="3" shared="false">
+			<array  len="5" shared="false">
 				<real> 0 </real>
-				<real> 1 </real>
+				<real> 0.6 </real>
+				<real> 0.8 </real>
+				<real> 0.6 </real>
+				<real> 0.01 </real>
+			</array>
+			<string> "times" </string>
+			<real_array  len="5"> 				0, 0.5, 1, 1.5, 2 </real_array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://3">
+		<string name="resource/name"> "spin" </string>
+		<real name="length"> 2 </real>
+		<bool name="loop"> True </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> ".:transform/rot" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> True </bool>
+			<string> "transitions" </string>
+			<real_array  len="2"> 				1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="2" shared="false">
+				<real> 360 </real>
 				<real> 0 </real>
 			</array>
 			<string> "times" </string>
-			<real_array  len="3"> 				0, 1, 2 </real_array>
+			<real_array  len="2"> 				0, 2 </real_array>
 		</dictionary>
 
 	</resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="31">
+			<string_array  len="34">
 				<string> "target" </string>
 				<string> "Sprite" </string>
+				<string> "_import_path" </string>
 				<string> "visibility/visible" </string>
 				<string> "visibility/opacity" </string>
 				<string> "visibility/self_opacity" </string>
-				<string> "visibility/on_top" </string>
+				<string> "visibility/behind_parent" </string>
 				<string> "transform/pos" </string>
 				<string> "transform/rot" </string>
 				<string> "transform/scale" </string>
@@ -55,27 +102,31 @@
 				<string> "playback/process_mode" </string>
 				<string> "playback/default_blend_time" </string>
 				<string> "root/root" </string>
+				<string> "anims/spin" </string>
 				<string> "anims/pulse" </string>
 				<string> "playback/active" </string>
 				<string> "playback/speed" </string>
 				<string> "blend_times" </string>
 				<string> "autoplay" </string>
+				<string> "anim_spin" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 2 </int>
+			<int> 4 </int>
 			<string> "variants" </string>
-			<array  len="16" shared="false">
+			<array  len="23" shared="false">
+				<node_path> "" </node_path>
 				<bool> True </bool>
-				<real> 0 </real>
+				<real> 0.683512 </real>
 				<real> 1 </real>
-				<vector2> 0, 0 </vector2>
-				<vector2> 1, 1 </vector2>
-				<resource  resource_type="Texture" path="res://images/target.*">  </resource>
 				<bool> False </bool>
+				<vector2> 0, 0 </vector2>
+				<real> 360 </real>
+				<vector2> 1, 1 </vector2>
+				<resource  resource_type="Texture" path="res://images/target.png">  </resource>
 				<int> 1 </int>
 				<int> 0 </int>
 				<color> 1, 1, 1, 1 </color>
@@ -88,12 +139,18 @@
 							<string> "pixel_snap" </string>
 							<bool> False </bool>
 							<string> "zoom" </string>
-							<real> 0.814506 </real>
+							<real> 1.629012 </real>
+							<string> "use_snap" </string>
+							<bool> False </bool>
 							<string> "ofs" </string>
-							<vector2> -519.612, -145.051 </vector2>
+							<vector2> -357.931, -66.7099 </vector2>
+							<string> "snap" </string>
+							<int> 10 </int>
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
+							<string> "deflight_rot_y" </string>
+							<real> 0.628319 </real>
 							<string> "zfar" </string>
 							<real> 500 </real>
 							<string> "fov" </string>
@@ -107,9 +164,11 @@
 									<real> 0 </real>
 									<string> "y_rot" </string>
 									<real> 0 </real>
-									<string> "use_orthogonal" </string>
-									<bool> False </bool>
+									<string> "listener" </string>
+									<bool> True </bool>
 									<string> "use_environment" </string>
+									<bool> False </bool>
+									<string> "use_orthogonal" </string>
 									<bool> False </bool>
 									<string> "pos" </string>
 									<vector3> 0, 0, 0 </vector3>
@@ -121,9 +180,11 @@
 									<real> 0 </real>
 									<string> "y_rot" </string>
 									<real> 0 </real>
-									<string> "use_orthogonal" </string>
+									<string> "listener" </string>
 									<bool> False </bool>
 									<string> "use_environment" </string>
+									<bool> False </bool>
+									<string> "use_orthogonal" </string>
 									<bool> False </bool>
 									<string> "pos" </string>
 									<vector3> 0, 0, 0 </vector3>
@@ -135,9 +196,11 @@
 									<real> 0 </real>
 									<string> "y_rot" </string>
 									<real> 0 </real>
-									<string> "use_orthogonal" </string>
+									<string> "listener" </string>
 									<bool> False </bool>
 									<string> "use_environment" </string>
+									<bool> False </bool>
+									<string> "use_orthogonal" </string>
 									<bool> False </bool>
 									<string> "pos" </string>
 									<vector3> 0, 0, 0 </vector3>
@@ -149,9 +212,11 @@
 									<real> 0 </real>
 									<string> "y_rot" </string>
 									<real> 0 </real>
-									<string> "use_orthogonal" </string>
+									<string> "listener" </string>
 									<bool> False </bool>
 									<string> "use_environment" </string>
+									<bool> False </bool>
+									<string> "use_orthogonal" </string>
 									<bool> False </bool>
 									<string> "pos" </string>
 									<vector3> 0, 0, 0 </vector3>
@@ -161,12 +226,18 @@
 							<int> 1 </int>
 							<string> "default_light" </string>
 							<bool> True </bool>
+							<string> "ambient_light_color" </string>
+							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
 							<string> "show_origin" </string>
 							<bool> True </bool>
 							<string> "znear" </string>
 							<real> 0.1 </real>
+							<string> "default_srgb" </string>
+							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
@@ -179,14 +250,19 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
 				</dictionary>
+				<real> 0 </real>
 				<node_path> ".." </node_path>
 				<resource  resource_type="Animation" path="local://1">  </resource>
+				<resource  resource_type="Animation" path="local://2">  </resource>
 				<array  len="0" shared="false">
 				</array>
 				<string> "pulse" </string>
+				<resource  resource_type="Animation" path="local://3">  </resource>
+				<string> "spin" </string>
+				<vector2> 0.65, 0.65 </vector2>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="68"> 				-1, -1, 1, 0, -1, 19, 2, 0, 3, 1, 4, 2, 5, 0, 6, 3, 7, 1, 8, 4, 9, 5, 10, 0, 11, 3, 12, 6, 13, 6, 14, 7, 15, 7, 16, 8, 17, 9, 18, 6, 19, 10, 20, 11, 0, 0, 0, 22, 21, -1, 8, 23, 7, 24, 1, 25, 12, 26, 13, 27, 0, 28, 2, 29, 14, 30, 15, 0 </int_array>
+			<int_array  len="144"> 				-1, -1, 1, 0, -1, 20, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 1, 12, 5, 13, 4, 14, 4, 15, 9, 16, 9, 17, 10, 18, 11, 19, 4, 20, 12, 21, 13, 0, 0, 0, 23, 22, -1, 10, 2, 0, 24, 9, 25, 14, 26, 15, 27, 16, 28, 17, 29, 1, 30, 3, 31, 18, 32, 19, 0, 0, 0, 23, 33, -1, 9, 2, 0, 24, 9, 25, 14, 26, 15, 27, 20, 29, 1, 30, 3, 31, 18, 32, 21, 0, 0, 0, 1, 1, -1, 19, 2, 0, 3, 1, 4, 3, 5, 3, 6, 4, 7, 5, 8, 14, 9, 22, 10, 8, 11, 1, 12, 5, 13, 1, 14, 4, 15, 9, 16, 9, 17, 10, 18, 11, 19, 4, 20, 12, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>
