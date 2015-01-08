@@ -13,6 +13,7 @@ var blocks = []
 var target
 #var s_target
 
+#var player# = load("blip.gd")
 var blip
 var blip_support
 var blip_support_prev_pos
@@ -20,6 +21,9 @@ var blip_support_prev_pos
 var block_to_destroy
 
 var timer
+
+#func _init():
+#	player = load("res://scripts/blip.gd").new()
 
 func find_blip_support():
 	for block in blocks:
@@ -146,7 +150,7 @@ func _process(delta):
 	# See if blip is moved by a platform or block
 	var new_support = find_blip_support()
 	if new_support == null:
-		#jump()
+		#player.jump()
 		game_over()
 		#return
 	else:

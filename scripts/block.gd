@@ -1,6 +1,6 @@
 extends Sprite
 
-const MOVE_TIME = 2
+const MOVE_TIME = 1.5
 
 var move_dist
 
